@@ -74,6 +74,7 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__("./src/app/app.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_first_first_component__ = __webpack_require__("./src/app/components/first/first.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_donuts_rain_donuts_rain_component__ = __webpack_require__("./src/app/components/donuts-rain/donuts-rain.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_common__ = __webpack_require__("./node_modules/@angular/common/esm5/common.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -84,6 +85,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 // import { ClarityModule } from '@clr/angular';
+
 
 
 
@@ -118,7 +120,9 @@ var AppModule = /** @class */ (function () {
                     }
                 ])
             ],
-            providers: [],
+            providers: [
+                { provide: __WEBPACK_IMPORTED_MODULE_7__angular_common__["g" /* LocationStrategy */], useClass: __WEBPACK_IMPORTED_MODULE_7__angular_common__["d" /* HashLocationStrategy */] },
+            ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */]]
         })
     ], AppModule);
