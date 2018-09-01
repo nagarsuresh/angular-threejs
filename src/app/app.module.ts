@@ -5,12 +5,14 @@ import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { FirstComponent } from './components/first/first.component';
+import { DonutsRainComponent } from './components/donuts-rain/donuts-rain.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    FirstComponent
+    FirstComponent,
+    DonutsRainComponent
   ],
   imports: [
     BrowserModule,
@@ -18,8 +20,12 @@ import { FirstComponent } from './components/first/first.component';
     BrowserAnimationsModule,
     RouterModule.forRoot([
       {
-        path: 'first',
+        path: 'box',
         component: FirstComponent
+      },
+      {
+        path: 'donuts',
+        component: DonutsRainComponent
       }
     ])
   ],
