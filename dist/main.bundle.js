@@ -27,7 +27,7 @@ module.exports = "header {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  
 /***/ "./src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"main-container\">\n  <header class=\"header header-6\">\n    <div class=\"branding\">\n      <a href=\"javascript:void(0)\" class=\"nav-link\">\n        <!-- <clr-icon shape=\"lightbulb\"></clr-icon> -->\n        <span class=\"title\">Examples</span>\n      </a>\n    </div>\n    <div class=\"header-nav\">\n      <a href=\"https://github.com/nagarsuresh/angular-threejs\" class=\"nav-link nav-text\">Source Code</a>\n  </div>\n  </header>\n  <nav class=\"subnav\">\n    <ul class=\"nav\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"javascript:void(0)\" routerLink=\"./box\" routerLinkActive=\"active\">Box</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"javascript:void(0)\" routerLink=\"./donuts\" routerLinkActive=\"active\">Donuts</a>\n      </li>\n    </ul>\n  </nav>\n  <div class=\"content-container\">\n    <div class=\"content-area\">\n      <router-outlet></router-outlet>\n    </div>\n  </div>\n</div>"
+module.exports = "<div class=\"main-container\">\n  <header class=\"header header-6\">\n    <div class=\"branding\">\n      <a href=\"javascript:void(0)\" routerLink=\"/\" class=\"nav-link\">\n        <!-- <clr-icon shape=\"lightbulb\"></clr-icon> -->\n        <span class=\"title\">Examples</span>\n      </a>\n    </div>\n    <div class=\"header-nav\">\n      <a href=\"https://github.com/nagarsuresh/angular-threejs\" class=\"nav-link nav-text\">Source Code</a>\n  </div>\n  </header>\n  <nav class=\"subnav\">\n    <ul class=\"nav\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"javascript:void(0)\" routerLink=\"./box\" routerLinkActive=\"active\">Box</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"javascript:void(0)\" routerLink=\"./donuts\" routerLinkActive=\"active\">Donuts</a>\n      </li>\n    </ul>\n  </nav>\n  <div class=\"content-container\">\n    <div class=\"content-area\">\n      <router-outlet></router-outlet>\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -110,6 +110,11 @@ var AppModule = /** @class */ (function () {
                     {
                         path: 'donuts',
                         component: __WEBPACK_IMPORTED_MODULE_6__components_donuts_rain_donuts_rain_component__["a" /* DonutsRainComponent */]
+                    },
+                    {
+                        path: '',
+                        pathMatch: 'full',
+                        redirectTo: 'box'
                     }
                 ])
             ],

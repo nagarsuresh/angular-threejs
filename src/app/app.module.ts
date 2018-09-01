@@ -26,6 +26,11 @@ import { DonutsRainComponent } from './components/donuts-rain/donuts-rain.compon
       {
         path: 'donuts',
         component: DonutsRainComponent
+      },
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'box'
       }
     ])
   ],
