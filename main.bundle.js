@@ -153,7 +153,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var Base3jsComponent = /** @class */ (function () {
     function Base3jsComponent() {
-        this.renderer = new __WEBPACK_IMPORTED_MODULE_1_three__["i" /* WebGLRenderer */]();
+        this.renderer = new __WEBPACK_IMPORTED_MODULE_1_three__["j" /* WebGLRenderer */]();
         this.scene = null;
         this.camera = null;
         this.width = 1200;
@@ -162,7 +162,7 @@ var Base3jsComponent = /** @class */ (function () {
     }
     Base3jsComponent.prototype.ngOnInit = function () {
         // set scene
-        this.scene = new __WEBPACK_IMPORTED_MODULE_1_three__["g" /* Scene */]();
+        this.scene = new __WEBPACK_IMPORTED_MODULE_1_three__["h" /* Scene */]();
         this.scene.background = new __WEBPACK_IMPORTED_MODULE_1_three__["c" /* Color */](0xababab);
         if (this.showAxis) {
             this.scene.add(this.getAxis());
@@ -270,7 +270,16 @@ var DonutsRainComponent = /** @class */ (function (_super) {
         return _this;
     }
     DonutsRainComponent.prototype.initialize = function () {
+        this.createPlane();
         this.createNewDonut();
+    };
+    DonutsRainComponent.prototype.createPlane = function () {
+        var geometry = new __WEBPACK_IMPORTED_MODULE_2_three__["g" /* PlaneGeometry */](1000, 1000, 50, 50);
+        var material = new __WEBPACK_IMPORTED_MODULE_2_three__["e" /* MeshBasicMaterial */]({ color: 0xFFB38F, wireframe: true });
+        var plane = new __WEBPACK_IMPORTED_MODULE_2_three__["d" /* Mesh */](geometry, material);
+        plane.rotateX(Math.PI / 2);
+        plane.position.y = -100;
+        this.scene.add(plane);
     };
     DonutsRainComponent.prototype.createNewDonut = function () {
         var donut = this.getDonut();
@@ -286,9 +295,9 @@ var DonutsRainComponent = /** @class */ (function (_super) {
         this.scene.add(donut);
     };
     DonutsRainComponent.prototype.getDonut = function () {
-        var geometry = new __WEBPACK_IMPORTED_MODULE_2_three__["h" /* TorusGeometry */](1, 0.3, 16, 100);
+        var geometry = new __WEBPACK_IMPORTED_MODULE_2_three__["i" /* TorusGeometry */](1, 0.3, 16, 100);
         var color = Math.random() * 0xffffff;
-        var material = new __WEBPACK_IMPORTED_MODULE_2_three__["e" /* MeshBasicMaterial */]({ color: color });
+        var material = new __WEBPACK_IMPORTED_MODULE_2_three__["e" /* MeshBasicMaterial */]({ color: color, transparent: true, opacity: 0.8 });
         var donut = new __WEBPACK_IMPORTED_MODULE_2_three__["d" /* Mesh */](geometry, material);
         return donut;
     };
