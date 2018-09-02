@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Base3jsComponent } from '../../common/base-3js-component';
-import { Object3D, Mesh, SphereGeometry, MeshBasicMaterial, TorusGeometry } from 'three';
+import { Object3D, Mesh, SphereGeometry, MeshBasicMaterial, TorusGeometry, MeshNormalMaterial, PlaneGeometry } from 'three';
 
 @Component({
   selector: 'app-donuts-rain',
@@ -21,7 +21,18 @@ export class DonutsRainComponent extends Base3jsComponent {
   }
 
   protected initialize() {
+    this.createPlane();
     this.createNewDonut();
+  }
+
+  private createPlane() {
+    const geometry = new PlaneGeometry(1000, 1000, 50, 50);
+    const material = new MeshBasicMaterial({ color: 0xFFB38F, wireframe: true });
+    const plane = new Mesh(geometry, material);
+    plane.rotateX(Math.PI / 2);
+    plane.position.y = -100;
+
+    this.scene.add(plane);
   }
 
   private createNewDonut() {
@@ -41,7 +52,7 @@ export class DonutsRainComponent extends Base3jsComponent {
   private getDonut(): Mesh {
     const geometry = new TorusGeometry(1, 0.3, 16, 100);
     const color = Math.random() * 0xffffff;
-    const material = new MeshBasicMaterial({ color: color });
+    const material = new MeshBasicMaterial({ color: color, transparent: true, opacity: 0.8});
     const donut = new Mesh(geometry, material);
     return donut;
 
