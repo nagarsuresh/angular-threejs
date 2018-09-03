@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { FirstComponent } from './components/first/first.component';
 import { DonutsRainComponent } from './components/donuts-rain/donuts-rain.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { OrbitComponent } from './components/rotate/orbit.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     FirstComponent,
-    DonutsRainComponent
+    DonutsRainComponent,
+    OrbitComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +29,10 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
       {
         path: 'donuts',
         component: DonutsRainComponent
+      },
+      {
+        path: 'orbit',
+        component: OrbitComponent
       },
       {
         path: '',
