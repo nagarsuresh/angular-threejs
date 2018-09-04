@@ -1,5 +1,5 @@
 import { AfterViewInit, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { AxesHelper, Color, DirectionalLight, PerspectiveCamera, Scene, WebGLRenderer } from 'three';
+import { AxesHelper, Color, DirectionalLight, PerspectiveCamera, Scene, WebGLRenderer, Camera } from 'three';
 
 export abstract class Base3jsComponent implements OnInit, AfterViewInit, OnDestroy {
 
@@ -7,7 +7,7 @@ export abstract class Base3jsComponent implements OnInit, AfterViewInit, OnDestr
 
   protected renderer = new WebGLRenderer();
   protected scene: Scene = null;
-  protected camera = null;
+  protected camera: Camera = null;
   protected width = 1200;
   protected height = 800;
 

@@ -8,6 +8,7 @@ import { FirstComponent } from './components/first/first.component';
 import { DonutsRainComponent } from './components/donuts-rain/donuts-rain.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { OrbitComponent } from './components/rotate/orbit.component';
+import { MovingSpotlightComponent } from './components/moving-spotlight/moving-spotlight.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { OrbitComponent } from './components/rotate/orbit.component';
     AppComponent,
     FirstComponent,
     DonutsRainComponent,
-    OrbitComponent
+    OrbitComponent,
+    MovingSpotlightComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +35,10 @@ import { OrbitComponent } from './components/rotate/orbit.component';
       {
         path: 'orbit',
         component: OrbitComponent
+      },
+      {
+        path: 'spotlight',
+        component: MovingSpotlightComponent
       },
       {
         path: '',
