@@ -9,6 +9,8 @@ import { DonutsRainComponent } from './components/donuts-rain/donuts-rain.compon
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { OrbitComponent } from './components/rotate/orbit.component';
 import { MovingSpotlightComponent } from './components/moving-spotlight/moving-spotlight.component';
+import { OrthographicComponent } from './components/orthographic/orthographic.component';
+import { SolarSystemComponent } from './components/solar-system/solar-system.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { MovingSpotlightComponent } from './components/moving-spotlight/moving-s
     FirstComponent,
     DonutsRainComponent,
     OrbitComponent,
-    MovingSpotlightComponent
+    MovingSpotlightComponent,
+    OrthographicComponent,
+    SolarSystemComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +43,14 @@ import { MovingSpotlightComponent } from './components/moving-spotlight/moving-s
       {
         path: 'spotlight',
         component: MovingSpotlightComponent
+      },
+      {
+        path: 'solar-system',
+        component: SolarSystemComponent
+      },
+      {
+        path: 'orthographic',
+        component: OrthographicComponent
       },
       {
         path: '',

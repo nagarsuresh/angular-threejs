@@ -1,5 +1,10 @@
 import { AfterViewInit, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { AxesHelper, Color, DirectionalLight, PerspectiveCamera, Scene, WebGLRenderer, Camera } from 'three';
+import { AxesHelper, Color, DirectionalLight, PerspectiveCamera, Scene, WebGLRenderer, Camera, OrthographicCamera, Vector3 } from 'three';
+
+
+export enum CameraType {
+  Perspective, Orthographic
+}
 
 export abstract class Base3jsComponent implements OnInit, AfterViewInit, OnDestroy {
 
@@ -17,6 +22,10 @@ export abstract class Base3jsComponent implements OnInit, AfterViewInit, OnDestr
 
   protected backgroundColor = 0xababab;
 
+  protected cameraType: CameraType = CameraType.Perspective;
+
+  frustumSize = 1000;
+
   constructor() {
   }
 
@@ -29,7 +38,11 @@ export abstract class Base3jsComponent implements OnInit, AfterViewInit, OnDestr
     }
 
     // create camera
-    this.camera = this.getCamera();
+    if (this.cameraType === CameraType.Perspective) {
+      this.camera = this.getPerspectiveCamera();
+    } else {
+      this.camera = this.getOrthographicCamera();
+    }
 
     this.initialize();
 
@@ -42,7 +55,7 @@ export abstract class Base3jsComponent implements OnInit, AfterViewInit, OnDestr
 
   protected abstract initialize();
 
-  protected getCamera() {
+  protected getPerspectiveCamera() {
     const camera = new PerspectiveCamera(75, this.width / this.height, 1, 1000);
     this.adjustCamera(camera);
     return camera;
@@ -52,8 +65,32 @@ export abstract class Base3jsComponent implements OnInit, AfterViewInit, OnDestr
     camera.position.z = 10;
   }
 
+
+  protected getOrthographicCamera() {
+    console.log('width', this.width);
+    console.log('height', this.height);
+
+    const aspect = this.width / this.height;
+    const frustumSize = 100;
+
+    console.log('->', frustumSize * aspect / - 2);
+    const cam = new OrthographicCamera(
+      frustumSize * aspect / - 2, // -75
+      frustumSize * aspect / 2, // 75
+      frustumSize / 2, // 50
+      frustumSize / - 2, // 50
+      1, 3000);
+
+    cam.position.y = 30;
+
+    cam.position.x = 20;
+    cam.position.z = 60;
+
+    return cam;
+  }
+
   protected getAxis() {
-    const axes = new AxesHelper(10);
+    const axes = new AxesHelper(400);
     return axes;
   }
 
@@ -65,6 +102,7 @@ export abstract class Base3jsComponent implements OnInit, AfterViewInit, OnDestr
     this.width = this.rendererContainer.nativeElement.clientWidth;
     this.height = this.rendererContainer.nativeElement.clientHeight;
     this.renderer.setSize(this.width, this.height);
+    this.renderer.setPixelRatio(window.devicePixelRatio);
     this.rendererContainer.nativeElement.appendChild(this.renderer.domElement);
     this.animate();
   }
@@ -77,6 +115,12 @@ export abstract class Base3jsComponent implements OnInit, AfterViewInit, OnDestr
 
   protected doAnimate() {
     // to be overridde by derived class
+    const timer = Date.now() * 0.0001;
+    // this.camera.position.x = Math.cos(timer) * 600;
+    // this.camera.position.z = Math.sin(timer) * 600;
+    this.camera.lookAt(this.scene.position);
+    // console.log(this.scene.position);
+    // console.log(this.camera.position);
   }
 
   ngOnDestroy() {

@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angula
 
 import * as T from 'three';
 import { Base3jsComponent } from '../../common/base-3js-component';
+import { GridHelper } from 'three';
 
 @Component({
   selector: 'app-first',
@@ -20,6 +21,9 @@ export class FirstComponent extends Base3jsComponent {
   protected initialize() {
     this.cube = this.getCube();
     this.scene.add(this.cube);
+    const gridHelper = new GridHelper(1000, 20);
+    this.scene.add(gridHelper);
+
   }
 
   private getCube() {

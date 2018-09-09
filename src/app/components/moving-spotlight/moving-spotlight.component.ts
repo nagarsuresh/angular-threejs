@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BoxGeometry, DoubleSide, Mesh, MeshPhongMaterial, Object3D, SpotLight, Vector3 } from 'three';
+import { BoxGeometry, DoubleSide, Mesh, MeshPhongMaterial, Object3D, SpotLight, Vector3, GridHelper } from 'three';
 import { Base3jsComponent } from '../../common/base-3js-component';
 
 @Component({
@@ -84,7 +84,7 @@ class MovingLight {
   private currentVelocity;
 
   constructor(private position: 'right' | 'left') {
-    this.light = new SpotLight(0xffffff, 1);
+    this.light = new SpotLight(0xffffff, 2);
     this.target = new Object3D();
     this.light.target = this.target;
     if (this.position === 'left') {
