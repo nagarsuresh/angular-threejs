@@ -60,10 +60,7 @@ export class MovingSpotlightComponent extends Base3jsComponent {
     return cube;
   }
 
-  private getNumberInBetween(from: number, to: number): number {
-    return from + (Math.random() * (to - from));
-  }
-
+  
   doAnimate() {
     this.leftLight.move();
     this.rightLight.move();

@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import {
   Geometry, Matrix4, Mesh, MeshBasicMaterial, MeshStandardMaterial,
-  Object3D, Points, PointsMaterial, SphereGeometry, TorusGeometry, Vector3, PointLight, AmbientLight, TextureLoader, SpotLight, MeshPhongMaterial
+  Object3D, Points, PointsMaterial,
+  SphereGeometry, TorusGeometry, Vector3, PointLight, AmbientLight, TextureLoader, SpotLight, MeshPhongMaterial
 } from 'three';
 import { Base3jsComponent } from '../../common/base-3js-component';
 
@@ -157,7 +158,7 @@ export class SolarSystemComponent extends Base3jsComponent {
 
   private getPlanet(config) {
     const geometry = new SphereGeometry(config.size, 50, 50);
-    geometry.applyMatrix(new Matrix4().makeScale(1.0, 1.0, 1.5));
+    geometry.applyMatrix(new Matrix4().makeScale(1.0, 1.6, 1));
     // const color = config.color;
     const color = Math.random() * 0xffffff;
     const material = new MeshPhongMaterial({
@@ -165,6 +166,8 @@ export class SolarSystemComponent extends Base3jsComponent {
     });
     // const material = new MeshBasicMaterial({ map: config.texture });
     const planet = new Mesh(geometry, material);
+    planet.rotateX(-Math.PI / 2);
+    // planet.rotateZ(Math.PI / 12);
     return planet;
   }
 
@@ -175,14 +178,11 @@ export class SolarSystemComponent extends Base3jsComponent {
         config.pivot.rotateZ(config.speed);
       }
       if (config.planet) {
-        config.planet.rotateZ(0.05);
+        config.planet.rotateY(0.05);
       }
     });
   }
 
-  private getNumberInBetween(from: number, to: number): number {
-    return from + (Math.random() * (to - from));
-  }
 
   private createLight() {
     const sunLight = new PointLight(0xffffff, 5, 200, 2);

@@ -1,1 +1,21 @@
+<div class="btn-group btn-primary">
+  <button class="btn" (click)="addBlock()">
+    <clr-icon shape="plus"></clr-icon>
+  </button>
+  <button class="btn" (click)="rotateLeft()">
+    <clr-icon shape="angle-double" dir="left"></clr-icon>
+  </button>
+  <button class="btn" (click)="rotateRight()">
+    <clr-icon shape="angle-double" dir="right"></clr-icon>
+  </button>
+  <button class="btn" (click)="zoomIn()">
+    <clr-icon shape="zoom-in"></clr-icon>
+  </button>
+  <button class="btn" (click)="zoomOut()">
+    <clr-icon shape="zoom-out"></clr-icon>
+  </button>
+  <button class="btn" (click)="restore()">
+    <clr-icon shape="backup-restore"></clr-icon>
+  </button>
+</div>
 <div #rendererContainer class="renderer-container"></div>

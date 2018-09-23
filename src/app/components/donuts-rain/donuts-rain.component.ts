@@ -73,7 +73,4 @@ export class DonutsRainComponent extends Base3jsComponent {
     });
   }
 
-  private getNumberInBetween(from: number, to: number): number {
-    return from + (Math.random() * (to - from));
-  }
 }

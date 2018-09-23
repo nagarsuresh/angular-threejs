@@ -25,6 +25,7 @@ export abstract class Base3jsComponent implements OnInit, AfterViewInit, OnDestr
   protected cameraType: CameraType = CameraType.Perspective;
 
   frustumSize = 1000;
+  protected topLight: DirectionalLight;
 
   constructor() {
   }
@@ -51,6 +52,7 @@ export abstract class Base3jsComponent implements OnInit, AfterViewInit, OnDestr
   protected addTopLight() {
     const light = new DirectionalLight(0xffffff);
     this.scene.add(light);
+    this.topLight = light;
   }
 
   protected abstract initialize();
@@ -64,6 +66,11 @@ export abstract class Base3jsComponent implements OnInit, AfterViewInit, OnDestr
   protected adjustCamera(camera) {
     camera.position.z = 10;
   }
+
+  public getNumberInBetween(from: number, to: number): number {
+    return from + (Math.random() * (to - from));
+  }
+
 
 
   protected getOrthographicCamera() {
@@ -79,12 +86,16 @@ export abstract class Base3jsComponent implements OnInit, AfterViewInit, OnDestr
       frustumSize * aspect / 2, // 75
       frustumSize / 2, // 50
       frustumSize / - 2, // 50
-      1, 3000);
+      -500, 500);
 
-    cam.position.y = 30;
+    cam.position.y = 15;
+    cam.position.x = 15;
+    cam.position.z = 100;
+    // cam.rotateX(-Math.PI / 6);
 
-    cam.position.x = 20;
-    cam.position.z = 60;
+    cam.lookAt(0, 0, 0);
+
+    // debugger;
 
     return cam;
   }
@@ -118,7 +129,7 @@ export abstract class Base3jsComponent implements OnInit, AfterViewInit, OnDestr
     const timer = Date.now() * 0.0001;
     // this.camera.position.x = Math.cos(timer) * 600;
     // this.camera.position.z = Math.sin(timer) * 600;
-    this.camera.lookAt(this.scene.position);
+    // this.camera.lookAt(this.scene.position);
     // console.log(this.scene.position);
     // console.log(this.camera.position);
   }

@@ -100,8 +100,5 @@ export class OrbitComponent extends Base3jsComponent {
     this.planet.rotateZ(Math.PI / 120);
   }
 
-  private getNumberInBetween(from: number, to: number): number {
-    return from + (Math.random() * (to - from));
-  }
 
 }
