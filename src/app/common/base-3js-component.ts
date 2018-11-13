@@ -1,5 +1,5 @@
 import { AfterViewInit, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { AxesHelper, Color, DirectionalLight, PerspectiveCamera, Scene, WebGLRenderer, Camera, OrthographicCamera, Vector3 } from 'three';
+import { AxesHelper, Camera, Color, DirectionalLight, OrthographicCamera, PerspectiveCamera, Scene, WebGLRenderer } from 'three';
 
 
 export enum CameraType {

@@ -29,7 +29,6 @@
     "core-js": "^2.4.1",
     "rxjs": "^5.5.6",
     "three": "^0.96.0",
-    "three-dragcontrols": "^0.88.2",
     "zone.js": "^0.8.19"
   },
   "devDependencies": {
@@ -51,7 +50,6 @@
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
     "protractor": "~5.1.2",
-    "three-dragcontrols": "^0.88.2",
     "ts-node": "~4.1.0",
     "tslint": "~5.9.1",
     "typescript": "~2.5.3"

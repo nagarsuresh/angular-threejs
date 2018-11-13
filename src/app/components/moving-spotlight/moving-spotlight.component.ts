@@ -60,7 +60,7 @@ export class MovingSpotlightComponent extends Base3jsComponent {
     return cube;
   }
 
-  
+
   doAnimate() {
     this.leftLight.move();
     this.rightLight.move();
